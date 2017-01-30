@@ -1,0 +1,58 @@
+body {
+  font-family: Sans-Serif;
+  background-color: #999;
+}
+
+.app {
+  width: 33vw;
+  margin: auto;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
+
+  h1 {
+    text-align: center;
+  }
+
+  .toggles {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+
+  .addTodoForm {
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+
+    .input {
+      width: 75%;
+      padding: 0.5rem;
+    }
+
+    .button {
+      width: 25%;
+      padding: 0.5rem;
+      outline: none;
+      border: none;
+      background-color: #121c69;
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  .todo {
+    display: flex;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+
+    &.hide {
+      position: absolute;
+      left: 9999px;
+    }
+
+    div {
+      width: 80%;
+    }
+  }
+}

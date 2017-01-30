@@ -1,0 +1,43 @@
+import React from 'react'
+
+// Flux
+import * as TodoActions from '../../actions/TodoActions'
+
+const AddTodo = React.createClass({
+  getInitialState: function() {
+    return {}
+  },
+
+  render() {
+    return (
+      <form className='addTodoForm' ref='addTodoForm' onSubmit={this.handleAddTodo}>
+        <input className='input' onChange={ this.handleChange } placeholder='Add Todo' />
+        <input className='button' type='submit' value='Add to the list' />
+      </form>
+    )
+  },
+
+  /////////////////
+  // My Functions
+  /////////////////
+
+  handleAddTodo(e) {
+    e.preventDefault()
+
+    if(this.state.newTodo) {
+      TodoActions.addTodo(this.state.newTodo)
+    }
+
+    this.refs.addTodoForm.reset()
+  },
+
+  handleChange(e) {
+    this.setState({
+      newTodo: e.target.value
+    })
+  }
+
+  // End Class
+})
+
+module.exports = AddTodo
