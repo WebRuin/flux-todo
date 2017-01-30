@@ -14,6 +14,21 @@ export function deleteTodo(todoToDelete) {
   });
 }
 
+export function editTodo(todoToEdit, newText) {
+  dispatcher.dispatch({
+    type: "EDIT_TODO",
+    todoToEdit,
+    newText
+  });
+}
+
+export function toggleEditTodo(todoToEdit) {
+  dispatcher.dispatch({
+    type: 'TOGGLE_EDIT_TODO',
+    todoToEdit
+  })
+}
+
 export function toggleShowCompletedTodos() {
   dispatcher.dispatch({
     type: 'TOGGLE_SHOW_COMPLETED_TODOS'

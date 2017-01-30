@@ -9,14 +9,16 @@ class TodoStore extends EventEmitter {
     this.state = {
       todos: [
         {
+          complete: true,
+          edit: false,
           id: uuid(),
-          text: 'Go Shopping',
-          complete: true
+          text: 'Go Shopping'
         },
         {
+          complete: false,
+          edit: false,
           id: uuid(),
-          text: 'Pay Water Bill',
-          complete: false
+          text: 'Pay Water Bill'
         },
       ],
       showCompletedTodos: true,
@@ -31,9 +33,9 @@ class TodoStore extends EventEmitter {
 
   addTodo(text) {
     this.state.todos.push({
-      id: uuid(),
-      text,
       complete: false,
+      id: uuid(),
+      text
     })
 
     this.emit('change')
@@ -80,10 +82,38 @@ class TodoStore extends EventEmitter {
     this.emit('change')
 	}
 
+  toggleEditTodo(todoToToggle) {
+		this.state.todos = this.state.todos.map(function(todo) {
+      if ( todo.id === todoToToggle.id ) {
+        todo.edit = !todo.edit
+      }
+      return todo
+    })
+    this.emit('change')
+	}
+
+	editTodo(todoToEdit, newText) {
+		this.state.todos = this.state.todos.map(function(todo) {
+      if ( todo.id === todoToEdit.id ) {
+        todo.text = newText
+      }
+      return todo
+    })
+    this.emit('change')
+	}
+
   handleActions(action) {
     switch(action.type) {
       case 'ADD_TODO': {
         this.addTodo(action.text)
+        break
+      }
+      case 'EDIT_TODO': {
+        this.editTodo(action.todoToEdit, action.newText)
+        break
+      }
+      case 'TOGGLE_EDIT_TODO': {
+        this.toggleEditTodo(action.todoToEdit)
         break
       }
       case 'TOGGLE_SHOW_COMPLETED_TODOS': {
