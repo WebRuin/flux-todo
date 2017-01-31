@@ -25,13 +25,15 @@ export default class Todo extends React.Component {
       className = 'todo'
     }
 
-    let todoItem = todo.edit ? <EditTodo todo={todo} /> : <div>{todo.text}</div>
+    let isComplete = todo.complete ? 'complete' : ''
+    let todoItem = todo.edit ? <EditTodo todo={todo} /> : <div className={ isComplete }>{todo.text}</div>
+    let edit = todo.complete ? '' : <button className='edit' onClick={ this.handleToggleEditTodo }>edit</button>
 
     return (
       <div className={className}>
         <input type='checkbox' onChange={ this.handleCompleteToggle } defaultChecked={ todo.complete }/>
         { todoItem }
-        <button className='edit' onClick={ this.handleToggleEditTodo }>edit</button>
+        { edit }
         <button onClick={ this.handleDeleteTodo }>X</button>
       </div>
     )

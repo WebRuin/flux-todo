@@ -43,12 +43,38 @@ body {
 
   .todo {
     display: flex;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #6b76cc;
     justify-content: space-between;
+    font-family: 'Shadows Into Light Two', cursive;
 
     &.hide {
       position: absolute;
       left: 9999px;
+    }
+
+    .complete {
+      color: #333;
+      text-decoration: line-through;
+    }
+
+    form {
+      width: 80%;
+
+      .newText {
+        width: 82%;
+        padding: 0.25rem;
+      }
+
+      .save {
+        width: 13%;
+        color: #fff;
+        background-color: #121c69;
+        outline: none;
+        border: none;
+        padding: 0.38rem;
+      }
     }
 
     div {

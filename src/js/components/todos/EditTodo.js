@@ -8,8 +8,8 @@ export default class EditTodo extends React.Component {
 
     return (
       <form onSubmit={ this.handleEditTodo.bind(this) }>
-        <input placeholder={ todo.text } ref='newText' />
-        <input type='submit' value='Save' />
+        <input className='newText' placeholder={ todo.text } ref='newText' />
+        <input className='save' type='submit' value='Save' />
       </form>
     )
   }
