@@ -66,8 +66,8 @@ class TodoStore extends EventEmitter {
   }
 
 	deleteTodo(todoToDelete) {
-		this.state.todo = this.state.todos.filter( function(todo) {
-      return todo.id === todoToDelete.id
+		this.state.todos = this.state.todos.filter( function(todo) {
+      return todo.id !== todoToDelete.id
     })
     this.emit('change')
 	}
