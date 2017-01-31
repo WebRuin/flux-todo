@@ -31,7 +31,7 @@ export default class Todo extends React.Component {
 
     return (
       <div className={className}>
-        <input type='checkbox' onChange={ this.handleCompleteToggle } defaultChecked={ todo.complete }/>
+        <input className='todoCheckbox' type='checkbox' onChange={ this.handleCompleteToggle } defaultChecked={ todo.complete }/>
         { todoItem }
         { edit }
         <button onClick={ this.handleDeleteTodo }>X</button>

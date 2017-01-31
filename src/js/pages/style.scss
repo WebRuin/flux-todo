@@ -3,6 +3,12 @@ body {
   background-color: #999;
 }
 
+/* $activeColor: #c0392b; //red */
+$activeColor: #27ae60; //green
+$darkenColor: darken($activeColor, 20%);
+/* $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png'); */
+$background: #3498db;
+
 .app {
   width: 33vw;
   margin: auto;
@@ -99,6 +105,49 @@ body {
     border-bottom: 1px solid #6b76cc;
     justify-content: space-between;
     font-family: 'Shadows Into Light Two', cursive;
+
+    /* .squaredOne */
+    .todoCheckbox {
+      width: 18px;
+      height: 18px;
+      position: relative;
+      margin-right: 1rem;
+      background: #fcfff4;
+      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+      label {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        cursor: pointer;
+        background: linear-gradient(top, #222 0%, #45484d 100%);
+        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,1);
+        &:after {
+          content: '';
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          background: $activeColor;
+          background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
+          box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+          opacity: 0;
+        }
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+      input[type=checkbox] {
+        visibility: hidden;
+        &:checked + label:after {
+          opacity: 1;
+        }   
+      } 
+    }
+    /* end .squaredOne */
 
     &.hide {
       position: absolute;
