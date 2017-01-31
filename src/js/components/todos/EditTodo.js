@@ -3,20 +3,41 @@ import React from 'react'
 import * as TodoAction from '../../actions/TodoActions'
 
 export default class EditTodo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      editedTodo: ''
+    }
+    this.handleTodoChange = this.handleTodoChange.bind(this)
+    this.handleEditTodo = this.handleEditTodo.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({
+      editedTodo: this.props.todo.text
+    })
+  }
+
   render() {
     const todo = this.props.todo
 
     return (
-      <form onSubmit={ this.handleEditTodo.bind(this) }>
-        <input className='newText' placeholder={ todo.text } ref='newText' />
-        <input className='save' type='submit' value='Save' />
+      <form onSubmit={ this.handleEditTodo } >
+        <input className='newText' value={ this.state.editedTodo } onChange={ this.handleTodoChange } />
+        <input type='submit' className='save' value='Save' />
       </form>
     )
   }
 
-  handleEditTodo() {
-    TodoAction.editTodo(this.props.todo, this.refs.newText.value)
-    TodoAction.toggleEditTodo(this.props.todo)
+  handleTodoChange(e) {
+    this.setState({
+      editedTodo: e.target.value
+    })
+  }
+
+  handleEditTodo(e) {
+    e.preventDefault()
+    TodoAction.editTodo(this.props.todo, this.state.editedTodo)
   }
 
 }

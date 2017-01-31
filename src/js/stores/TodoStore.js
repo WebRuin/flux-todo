@@ -96,6 +96,7 @@ class TodoStore extends EventEmitter {
 		this.state.todos = this.state.todos.map(function(todo) {
       if ( todo.id === todoToEdit.id ) {
         todo.text = newText
+        todo.edit = !todo.edit
       }
       return todo
     })
