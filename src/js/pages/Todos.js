@@ -43,12 +43,13 @@ export default class Featured extends React.Component {
     return (
       <div className='app'>
         <h1>React Flux Todos</h1>
+        
         <AddTodo />
 
         <section className='toggles'>
           <div>
             <input
-              type="checkbox"
+              type='checkbox' className='checkbox'
               defaultChecked={ this.state.showIncompletedTodos }
               onChange={ TodoActions.toggleShowIncompletedTodos }
             />
@@ -56,7 +57,7 @@ export default class Featured extends React.Component {
           </div>
           <div>
             <input
-              type="checkbox"
+              type='checkbox' className='checkbox'
               defaultChecked={ this.state.showCompletedTodos }
               onChange={ TodoActions.toggleShowCompletedTodos }
             />

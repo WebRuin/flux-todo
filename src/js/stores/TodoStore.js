@@ -9,7 +9,7 @@ class TodoStore extends EventEmitter {
     this.state = {
       todos: [
         {
-          complete: true,
+          complete: false,
           edit: false,
           id: uuid(),
           text: 'Go Shopping'
