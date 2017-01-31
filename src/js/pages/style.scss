@@ -26,10 +26,10 @@ $background: #3498db;
     padding: 1rem;
     align-items: center;
     justify-content: center;
-    background-color: #333;
+    background-color: #666;
     margin: 1rem -1rem -1rem -1rem;
     justify-content: space-between;
-    box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 5px 5px 0px rgba(33,33,33,0.75);
 
     .checkbox {
       width: 18px;
@@ -100,21 +100,34 @@ $background: #3498db;
 
   .todo {
     display: flex;
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 0 0;
     padding: 0.5rem 0;
+    font-weight: bold;
+    transition: 1s;
     border-bottom: 1px solid #6b76cc;
     justify-content: space-between;
     font-family: 'Shadows Into Light Two', cursive;
 
+    &.hide {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+      margin: 0;
+      transition: 1s;
+    }
+
+    .complete {
+      color: #666;
+      text-decoration: line-through;
+    }
+
     button {
       border: none;
       outline: none;
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-      background-color: #121c69;
+      background-color: transparent;
 
       .fa {
-        color: #fff;
+        color: #333;
         font-size: 1.25rem;
       }
     }
@@ -127,7 +140,7 @@ $background: #3498db;
       margin-right: 1rem;
       background: #fcfff4;
       background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+      box-shadow: inset 0px 1px 1px white;
       label {
         width: 20px;
         height: 20px;
@@ -162,16 +175,6 @@ $background: #3498db;
     }
     /* end .squaredOne */
 
-    &.hide {
-      position: absolute;
-      left: 9999px;
-    }
-
-    .complete {
-      color: #333;
-      text-decoration: line-through;
-    }
-
     form {
       width: 82%;
 
@@ -184,12 +187,10 @@ $background: #3498db;
       button {
         border: none;
         outline: none;
-        padding: 0.75rem 0.5rem;
-        margin-right: 0.5rem;
-        background-color: #121c69;
+        background-color: transparent;
 
         .fa {
-          color: #fff;
+          color: #333;
           font-size: 1.25rem;
         }
       }
