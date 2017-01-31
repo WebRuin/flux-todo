@@ -23,8 +23,8 @@ export default class EditTodo extends React.Component {
 
     return (
       <form onSubmit={ this.handleEditTodo } >
-        <input className='newText' value={ this.state.editedTodo } onChange={ this.handleTodoChange } />
-        <input type='submit' className='save' value='Save' />
+        <input value={ this.state.editedTodo } onChange={ this.handleTodoChange } />
+        <button type='submit'><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
       </form>
     )
   }

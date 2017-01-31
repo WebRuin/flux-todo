@@ -106,6 +106,19 @@ $background: #3498db;
     justify-content: space-between;
     font-family: 'Shadows Into Light Two', cursive;
 
+    button {
+      border: none;
+      outline: none;
+      padding: 0.5rem;
+      margin-right: 0.5rem;
+      background-color: #121c69;
+
+      .fa {
+        color: #fff;
+        font-size: 1.25rem;
+      }
+    }
+
     /* .squaredOne */
     .todoCheckbox {
       width: 18px;
@@ -160,20 +173,25 @@ $background: #3498db;
     }
 
     form {
-      width: 80%;
+      width: 82%;
 
-      .newText {
-        width: 82%;
-        padding: 0.25rem;
+      input {
+        width: 80.5%;
+        padding: 0.5rem 0.25rem;
+        font-size: 1.12rem;
+        margin-right: 0.5rem;
       }
-
-      .save {
-        width: 13%;
-        color: #fff;
-        background-color: #121c69;
-        outline: none;
+      button {
         border: none;
-        padding: 0.38rem;
+        outline: none;
+        padding: 0.75rem 0.5rem;
+        margin-right: 0.5rem;
+        background-color: #121c69;
+
+        .fa {
+          color: #fff;
+          font-size: 1.25rem;
+        }
       }
     }
 
