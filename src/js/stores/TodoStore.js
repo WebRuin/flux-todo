@@ -15,6 +15,7 @@ class TodoStore extends EventEmitter {
 
     this.deleteTodo = this.deleteTodo.bind(this)
     this.toggleTodo = this.toggleTodo.bind(this)
+    this.fetchUserState = this.fetchUserState.bind(this)
     this.toggleShowCompletedTodos = this.toggleShowCompletedTodos.bind(this)
     this.toggleShowIncompletedTodos = this.toggleShowIncompletedTodos.bind(this)
   }
@@ -54,7 +55,10 @@ class TodoStore extends EventEmitter {
       axios.get('http://localhost:3000/todos')
         .then(function(result) {
           console.log(result.data)
-          th.state.todos = result.data
+          result.data.map((data) => {
+            th.addTodo(data.text)
+          })
+          //th.state.todos.push(result.data)
         })
   }
 
