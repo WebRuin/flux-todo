@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
+import axios from 'axios'
 
 import uuid from 'uuid4'
 
@@ -7,20 +8,7 @@ class TodoStore extends EventEmitter {
   constructor() {
     super()
     this.state = {
-      todos: [
-        {
-          complete: false,
-          edit: false,
-          id: uuid(),
-          text: 'Go Shopping'
-        },
-        {
-          complete: false,
-          edit: false,
-          id: uuid(),
-          text: 'Pay Water Bill'
-        },
-      ],
+      todos: [],
       showCompletedTodos: true,
       showIncompletedTodos: true
     }
@@ -41,8 +29,33 @@ class TodoStore extends EventEmitter {
     this.emit('change')
   }
 
-  getTodos() {
-    return this.state.todos
+	deleteTodo(todoToDelete) {
+		this.state.todos = this.state.todos.filter( function(todo) {
+      return todo.id !== todoToDelete.id
+    })
+    this.emit('change')
+	}
+
+	editTodo(todoToEdit, newText) {
+		this.state.todos = this.state.todos.map(function(todo) {
+      if ( todo.id === todoToEdit.id ) {
+        todo.text = newText
+        todo.edit = !todo.edit
+      }
+      return todo
+    })
+    this.emit('change')
+	}
+
+  fetchUserState() {
+    let th = this
+    console.log(th)
+    this.serverRequest = 
+      axios.get('http://localhost:3000/todos')
+        .then(function(result) {
+          console.log(result.data)
+          th.state.todos = result.data
+        })
   }
 
   getShowCompletedTodos() {
@@ -53,34 +66,9 @@ class TodoStore extends EventEmitter {
     return this.state.showIncompletedTodos
   }
 
-	// Toggle the showing of completed todos
-	toggleShowCompletedTodos() {
-		this.state.showCompletedTodos = !this.state.showCompletedTodos
-    this.emit('change')
-	}
-
-	// Toggle the showing of incompleted todos
-	toggleShowIncompletedTodos() {
-		this.state.showIncompletedTodos = !this.state.showIncompletedTodos
-    this.emit('change')
+  getTodos() {
+    return this.state.todos
   }
-
-	deleteTodo(todoToDelete) {
-		this.state.todos = this.state.todos.filter( function(todo) {
-      return todo.id !== todoToDelete.id
-    })
-    this.emit('change')
-	}
-
-	toggleTodo(todoToToggle) {
-		this.state.todos = this.state.todos.map(function(todo) {
-      if ( todo.id === todoToToggle.id ) {
-        todo.complete = !todo.complete
-      }
-      return todo
-    })
-    this.emit('change')
-	}
 
   toggleEditTodo(todoToToggle) {
 		this.state.todos = this.state.todos.map(function(todo) {
@@ -92,11 +80,20 @@ class TodoStore extends EventEmitter {
     this.emit('change')
 	}
 
-	editTodo(todoToEdit, newText) {
+	toggleShowCompletedTodos() {
+		this.state.showCompletedTodos = !this.state.showCompletedTodos
+    this.emit('change')
+	}
+  
+	toggleShowIncompletedTodos() {
+		this.state.showIncompletedTodos = !this.state.showIncompletedTodos
+    this.emit('change')
+  }
+
+	toggleTodo(todoToToggle) {
 		this.state.todos = this.state.todos.map(function(todo) {
-      if ( todo.id === todoToEdit.id ) {
-        todo.text = newText
-        todo.edit = !todo.edit
+      if ( todo.id === todoToToggle.id ) {
+        todo.complete = !todo.complete
       }
       return todo
     })

@@ -23,6 +23,7 @@ export default class Featured extends React.Component {
   }
 
   componentWillMount() {
+    TodoStore.fetchUserState()
     TodoStore.on('change', this.getState)
   }
 

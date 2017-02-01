@@ -1,0 +1,16 @@
+{
+  "todos": [
+    {
+      "complete": "false",
+      "edit": "false",
+      "id": "uuid()",
+      "text": "Go Shopping"
+    },
+    {
+      "complete": "false",
+      "edit": "false",
+      "id": "uuid()",
+      "text": "Pay Water Bill"
+    }
+  ]
+}
