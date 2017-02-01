@@ -16,6 +16,7 @@ export default class Todo extends React.Component {
 
   render() {
     const todo = this.props.todo
+    
     let className = ''
     if (
       ( todo.complete && !this.props.showCompletedTodos ) || 
@@ -39,16 +40,16 @@ export default class Todo extends React.Component {
     )
   }
 
-  handleToggleEditTodo() {
-    console.log(this.props.todo)
-    TodoActions.toggleEditTodo(this.props.todo)
+  handleCompleteToggle(e) {
+    TodoActions.toggleTodo(this.props.todo)
   }
 
   handleDeleteTodo() {
     TodoActions.deleteTodo(this.props.todo)
   }
 
-  handleCompleteToggle(e) {
-    TodoActions.toggleTodo(this.props.todo)
+  handleToggleEditTodo() {
+    console.log(this.props.todo)
+    TodoActions.toggleEditTodo(this.props.todo)
   }
 }

@@ -17,10 +17,6 @@ const AddTodo = React.createClass({
     )
   },
 
-  /////////////////
-  // My Functions
-  /////////////////
-
   handleAddTodo(e) {
     e.preventDefault()
 

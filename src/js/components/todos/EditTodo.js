@@ -8,8 +8,8 @@ export default class EditTodo extends React.Component {
     this.state = {
       editedTodo: ''
     }
-    this.handleTodoChange = this.handleTodoChange.bind(this)
     this.handleEditTodo = this.handleEditTodo.bind(this)
+    this.handleTodoChange = this.handleTodoChange.bind(this)
   }
 
   componentDidMount() {
@@ -29,15 +29,14 @@ export default class EditTodo extends React.Component {
     )
   }
 
-  handleTodoChange(e) {
-    this.setState({
-      editedTodo: e.target.value
-    })
-  }
-
   handleEditTodo(e) {
     e.preventDefault()
     TodoAction.editTodo(this.props.todo, this.state.editedTodo)
   }
 
+  handleTodoChange(e) {
+    this.setState({
+      editedTodo: e.target.value
+    })
+  }
 }
