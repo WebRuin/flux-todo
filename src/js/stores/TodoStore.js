@@ -35,10 +35,15 @@ class TodoStore extends EventEmitter {
 		this.state.todos = this.state.todos.filter( function(todo) {
       return todo.id !== todoToDelete.id
     })
-
-    axios.delete('http://localhost:3000/todos/' + todoToDelete.id)
+    this.postToDeleted(todoToDelete)
+    this.deleteFromTodoDB(todoToDelete.id)
+    
     this.emit('change')
 	}
+
+  deleteFromTodoDB(id) {
+    axios.delete('http://localhost:3000/todos/' + id)
+  }
 
 	editTodo(todoToEdit, newText) {
 		this.state.todos = this.state.todos.map(function(todo) {
@@ -74,13 +79,15 @@ class TodoStore extends EventEmitter {
     return this.state.todos
   }
 
+  postToDeleted(todo) {
+    axios.post('http://localhost:3000/deleted-todos', todo)
+  }
+
   postTodo(todo) {
-    console.log(todo)
     axios.post('http://localhost:3000/todos', todo)
   }
 
   setID() {
-    console.log('i was called')
     return this.state.todos.length + 1
   }
 

@@ -12,5 +12,13 @@
       "id": "2",
       "text": "Go for a walk"
     }
+  ],
+  "deleted-todos": [
+    {
+      "complete": false,
+      "id": 3,
+      "text": "Hi",
+      "edit": false
+    }
   ]
 }
