@@ -2,7 +2,7 @@ import dispatcher from "../dispatcher";
 
 export function addTodo(text) {
   dispatcher.dispatch({
-    type: "ADD_TODO",
+    type: 'ADD_TODO',
     text,
   });
 }
@@ -16,10 +16,17 @@ export function deleteTodo(todoToDelete) {
 
 export function editTodo(todoToEdit, newText) {
   dispatcher.dispatch({
-    type: "EDIT_TODO",
+    type: 'EDIT_TODO',
     todoToEdit,
     newText
-  });
+  })
+}
+
+export function postTodo(todo) {
+  dispatcher.dispatch({
+    type: 'POST_TODO',
+    todo
+  })
 }
 
 export function toggleEditTodo(todoToEdit) {

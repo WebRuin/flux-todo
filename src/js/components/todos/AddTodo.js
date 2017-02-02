@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid4'
 
 // Flux
 import * as TodoActions from '../../actions/TodoActions'
@@ -22,6 +23,12 @@ const AddTodo = React.createClass({
 
     if(this.state.newTodo) {
       TodoActions.addTodo(this.state.newTodo)
+      TodoActions.postTodo({
+      complete: false,
+      id: uuid(),
+      text: this.state.newTodo,
+      edit: false
+    })
     }
 
     this.refs.addTodoForm.reset()

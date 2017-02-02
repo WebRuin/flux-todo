@@ -1,7 +1,6 @@
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
 import axios from 'axios'
-
 import uuid from 'uuid4'
 
 class TodoStore extends EventEmitter {
@@ -24,7 +23,8 @@ class TodoStore extends EventEmitter {
     this.state.todos.push({
       complete: false,
       id: uuid(),
-      text
+      text,
+      edit: false
     })
 
     this.emit('change')
@@ -54,11 +54,9 @@ class TodoStore extends EventEmitter {
     this.serverRequest = 
       axios.get('http://localhost:3000/todos')
         .then(function(result) {
-          console.log(result.data)
           result.data.map((data) => {
             th.addTodo(data.text)
-          })
-          //th.state.todos.push(result.data)
+          })  
         })
   }
 
@@ -72,6 +70,10 @@ class TodoStore extends EventEmitter {
 
   getTodos() {
     return this.state.todos
+  }
+
+  postTodo(todo) {
+    axios.post('http://localhost:3000/todos', todo)
   }
 
   toggleEditTodo(todoToToggle) {
@@ -110,10 +112,17 @@ class TodoStore extends EventEmitter {
         this.addTodo(action.text)
         break
       }
+      case 'DELETE_TODO': {
+        this.deleteTodo(action.todoToDelete)
+        break
+      }
       case 'EDIT_TODO': {
         this.editTodo(action.todoToEdit, action.newText)
         break
       }
+      case 'POST_TODO':
+        this.postTodo(action.todo)
+        break
       case 'TOGGLE_EDIT_TODO': {
         this.toggleEditTodo(action.todoToEdit)
         break
@@ -128,10 +137,6 @@ class TodoStore extends EventEmitter {
       }
       case 'TOGGLE_TODO': {
         this.toggleTodo(action.todo)
-        break
-      }
-      case 'DELETE_TODO': {
-        this.deleteTodo(action.todoToDelete)
         break
       }
     }
