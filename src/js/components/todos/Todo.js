@@ -49,7 +49,6 @@ export default class Todo extends React.Component {
   }
 
   handleToggleEditTodo() {
-    console.log(this.props.todo)
     TodoActions.toggleEditTodo(this.props.todo)
   }
 }
