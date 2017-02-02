@@ -13,8 +13,9 @@ class TodoStore extends EventEmitter {
     }
 
     this.deleteTodo = this.deleteTodo.bind(this)
-    this.toggleTodo = this.toggleTodo.bind(this)
     this.fetchUserState = this.fetchUserState.bind(this)
+    this.setID = this.setID.bind(this)
+    this.toggleTodo = this.toggleTodo.bind(this)
     this.toggleShowCompletedTodos = this.toggleShowCompletedTodos.bind(this)
     this.toggleShowIncompletedTodos = this.toggleShowIncompletedTodos.bind(this)
   }
@@ -79,6 +80,7 @@ class TodoStore extends EventEmitter {
   }
 
   setID() {
+    console.log('i was called')
     return this.state.todos.length + 1
   }
 

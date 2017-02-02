@@ -3,6 +3,7 @@ import uuid from 'uuid4'
 
 // Flux
 import * as TodoActions from '../../actions/TodoActions'
+import TodoStore from '../../stores/TodoStore'
 
 const AddTodo = React.createClass({
   getInitialState: function() {
@@ -24,11 +25,9 @@ const AddTodo = React.createClass({
     if(this.state.newTodo) {
       TodoActions.addTodo(this.state.newTodo)
 
-      console.log()
-
       TodoActions.postTodo({
         complete: false,
-        id: TodoActions.setID(),
+        id: TodoStore.setID() - 1,
         text: this.state.newTodo,
         edit: false
       })
