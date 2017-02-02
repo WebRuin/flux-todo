@@ -22,7 +22,7 @@ class TodoStore extends EventEmitter {
   addTodo(text) {
     this.state.todos.push({
       complete: false,
-      id: uuid(),
+      id: this.setID(),
       text,
       edit: false
     })
@@ -34,6 +34,8 @@ class TodoStore extends EventEmitter {
 		this.state.todos = this.state.todos.filter( function(todo) {
       return todo.id !== todoToDelete.id
     })
+
+    axios.delete('http://localhost:3000/todos/' + todoToDelete.id)
     this.emit('change')
 	}
 
@@ -50,7 +52,6 @@ class TodoStore extends EventEmitter {
 
   fetchUserState() {
     let th = this
-    console.log(th)
     this.serverRequest = 
       axios.get('http://localhost:3000/todos')
         .then(function(result) {
@@ -73,7 +74,12 @@ class TodoStore extends EventEmitter {
   }
 
   postTodo(todo) {
+    console.log(todo)
     axios.post('http://localhost:3000/todos', todo)
+  }
+
+  setID() {
+    return this.state.todos.length + 1
   }
 
   toggleEditTodo(todoToToggle) {
@@ -122,6 +128,9 @@ class TodoStore extends EventEmitter {
       }
       case 'POST_TODO':
         this.postTodo(action.todo)
+        break
+      case 'SET_ID':
+        this.setID()
         break
       case 'TOGGLE_EDIT_TODO': {
         this.toggleEditTodo(action.todoToEdit)

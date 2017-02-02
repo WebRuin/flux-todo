@@ -36,6 +36,12 @@ export function toggleEditTodo(todoToEdit) {
   })
 }
 
+export function setID() {
+  dispatcher.dispatch({
+    type: 'SET_ID'
+  })
+}
+
 export function toggleShowCompletedTodos() {
   dispatcher.dispatch({
     type: 'TOGGLE_SHOW_COMPLETED_TODOS'
