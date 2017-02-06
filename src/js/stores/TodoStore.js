@@ -33,7 +33,10 @@ class TodoStore extends EventEmitter {
       text
     }
     this.state.todos.push(newTodo)
+<<<<<<< HEAD
     console.log(newTodo)
+=======
+>>>>>>> history-page
     this.postTodo(newTodo)
 
     this.emit('change')
@@ -118,13 +121,7 @@ class TodoStore extends EventEmitter {
   }
 
   postToDeleted(todo) {
-    let deletedTodo = {
-      complete: false,
-      id: uuid(),
-      text: todo.text,
-      edit: false
-    }
-    axios.post('http://localhost:3000/deleted-todos', deletedTodo)
+    axios.post('http://localhost:3000/deleted-todos', todo)
   }
 
   postTodo(todo) {
@@ -136,25 +133,16 @@ class TodoStore extends EventEmitter {
   }
 
   restoreTodo(todoToRestore) {
-    this.state.deletedTodos = this.state.todos.filter( function(todo) {
+    this.state.deletedTodos = this.state.deletedTodos.filter( function(todo) {
       return todo.id !== todoToRestore.id
     })
 
-    this.state.todos.push({
-      complete: false,
-      id: this.setID(),
-      text: todoToRestore.text,
-      edit: false
-    })
+    this.state.todos.push(todoToRestore)
 
     this.deleteFromDeletedDB(todoToRestore.id)
     this.postTodo(todoToRestore)
 
     this.emit('change')
-  }
-
-  setID() {
-    return this.state.todos.length + 1
   }
 
   toggleEditTodo(todoToToggle) {

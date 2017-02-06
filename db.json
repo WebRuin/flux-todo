@@ -3,7 +3,7 @@
     {
       "complete": false,
       "edit": false,
-      "id": "282dda13-5644-4390-b2ba-e6d10dffe5e9",
+      "id": "20c90444-83e5-4d9c-ba45-0f44e5a03324",
       "text": "Pay Water Bill"
     },
     {
@@ -28,14 +28,16 @@
     },
     {
       "complete": false,
-      "id": "6801913c-fc28-4d45-ac9e-2a19f8cbb0ca",
-      "text": "test",
+      "id": "e06885fc-c6f4-4c90-80e2-c110ea4478df",
+      "text": "bob",
       "edit": false
-    },
+    }
+  ],
+  "deleted-todos": [
     {
       "complete": false,
-      "id": "c12a039b-9cb4-49a1-8c9b-8d1f709d745c",
-      "text": "bob",
+      "id": "55099e9d-27be-4c06-b9d4-80881ca8f342",
+      "text": "test",
       "edit": false
     }
   ]
