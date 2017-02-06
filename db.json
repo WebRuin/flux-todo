@@ -11,6 +11,12 @@
       "edit": false,
       "id": "282dda04-5543-4380-b2ba-e6d10dffe4d7",
       "text": "Go for a walk"
+    },
+    {
+      "complete": false,
+      "id": "20c90383-83a3-4d8a-ba45-0f44e5a02046",
+      "text": "Smoke",
+      "edit": false
     }
   ],
   "deleted-todos": [
@@ -19,6 +25,18 @@
       "edit": false,
       "id": "282dda04-5544-4380-b2ba-e6d10dffe4c8",
       "text": "go"
+    },
+    {
+      "complete": false,
+      "id": "6801913c-fc28-4d45-ac9e-2a19f8cbb0ca",
+      "text": "test",
+      "edit": false
+    },
+    {
+      "complete": false,
+      "id": "c12a039b-9cb4-49a1-8c9b-8d1f709d745c",
+      "text": "bob",
+      "edit": false
     }
   ]
 }

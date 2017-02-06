@@ -11,7 +11,7 @@ import Style from './style.scss'
 import AddTodo from '../components/todos/AddTodo'
 import TodoList from '../components/todos/TodoList'
 
-export default class Featured extends React.Component {
+export default class Todos extends React.Component {
   constructor() {
     super()
     this.state = {

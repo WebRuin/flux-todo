@@ -29,16 +29,23 @@ export function postTodo(todo) {
   })
 }
 
-export function toggleEditTodo(todoToEdit) {
+export function restoreTodo(todo) {
   dispatcher.dispatch({
-    type: 'TOGGLE_EDIT_TODO',
-    todoToEdit
+    type: 'RESTORE_TODO',
+    todo
   })
 }
 
 export function setID() {
   dispatcher.dispatch({
     type: 'SET_ID'
+  })
+}
+
+export function toggleEditTodo(todoToEdit) {
+  dispatcher.dispatch({
+    type: 'TOGGLE_EDIT_TODO',
+    todoToEdit
   })
 }
 
