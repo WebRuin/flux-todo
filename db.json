@@ -1,24 +1,24 @@
 {
   "todos": [
     {
-      "complete": "false",
-      "edit": "false",
-      "id": "1",
+      "complete": false,
+      "edit": false,
+      "id": "282dda13-5644-4390-b2ba-e6d10dffe5e9",
       "text": "Pay Water Bill"
     },
     {
-      "complete": "false",
-      "edit": "false",
-      "id": "2",
+      "complete": false,
+      "edit": false,
+      "id": "282dda04-5543-4380-b2ba-e6d10dffe4d7",
       "text": "Go for a walk"
     }
   ],
   "deleted-todos": [
     {
       "complete": false,
-      "id": 3,
-      "text": "Hi",
-      "edit": false
+      "edit": false,
+      "id": "282dda04-5544-4380-b2ba-e6d10dffe4c8",
+      "text": "go"
     }
   ]
 }

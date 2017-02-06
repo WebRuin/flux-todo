@@ -24,13 +24,6 @@ const AddTodo = React.createClass({
 
     if(this.state.newTodo) {
       TodoActions.addTodo(this.state.newTodo)
-
-      TodoActions.postTodo({
-        complete: false,
-        id: TodoStore.setID() - 1,
-        text: this.state.newTodo,
-        edit: false
-      })
     }
 
     this.refs.addTodoForm.reset()
