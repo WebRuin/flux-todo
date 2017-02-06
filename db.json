@@ -14,31 +14,16 @@
     },
     {
       "complete": false,
-      "id": "20c90383-83a3-4d8a-ba45-0f44e5a02046",
-      "text": "Smoke",
-      "edit": false
-    }
-  ],
-  "deleted-todos": [
-    {
-      "complete": false,
-      "edit": false,
-      "id": "282dda04-5544-4380-b2ba-e6d10dffe4c8",
-      "text": "go"
-    },
-    {
-      "complete": false,
-      "id": "e06885fc-c6f4-4c90-80e2-c110ea4478df",
-      "text": "bob",
-      "edit": false
-    }
-  ],
-  "deleted-todos": [
-    {
-      "complete": false,
       "id": "55099e9d-27be-4c06-b9d4-80881ca8f342",
       "text": "test",
       "edit": false
+    },
+    {
+      "complete": false,
+      "id": "20c90383-83a3-4d8a-ba45-0f44e5a02046",
+      "text": "Smoke Cig",
+      "edit": false
     }
-  ]
+  ],
+  "deleted-todos": []
 }

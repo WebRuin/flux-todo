@@ -33,10 +33,6 @@ class TodoStore extends EventEmitter {
       text
     }
     this.state.todos.push(newTodo)
-<<<<<<< HEAD
-    console.log(newTodo)
-=======
->>>>>>> history-page
     this.postTodo(newTodo)
 
     this.emit('change')

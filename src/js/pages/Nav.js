@@ -8,8 +8,8 @@ export default class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <Link to='/'>Todo</Link>
-        <Link to='/history'>History</Link>
+        <Link className='navLink' activeClassName='active' to='/'>Todo</Link>
+        <Link className='navLink' activeClassName='active' to='/history'>History</Link>
       </nav>
     )
   }
