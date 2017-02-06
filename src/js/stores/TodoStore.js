@@ -12,13 +12,6 @@ class TodoStore extends EventEmitter {
       showCompletedTodos: true,
       showIncompletedTodos: true
     }
-
-    this.deleteTodo = this.deleteTodo.bind(this)
-    this.fetchUserState = this.fetchUserState.bind(this)
-    this.setID = this.setID.bind(this)
-    this.toggleTodo = this.toggleTodo.bind(this)
-    this.toggleShowCompletedTodos = this.toggleShowCompletedTodos.bind(this)
-    this.toggleShowIncompletedTodos = this.toggleShowIncompletedTodos.bind(this)
   }
 
   addDelete() {
@@ -33,12 +26,20 @@ class TodoStore extends EventEmitter {
   }
 
   addTodo(text) {
-    this.state.todos.push({
+    let newTodo = {
       complete: false,
-      id: this.setID(),
-      text,
-      edit: false
-    })
+      edit: false,
+      id: uuid(),
+      text
+    }
+    this.state.todos.push(newTodo)
+    this.postTodo(newTodo)
+
+    this.emit('change')
+  }
+
+  addTodoFromDB(todo) {
+    this.state.todos.push(todo)
 
     this.emit('change')
   }
@@ -83,7 +84,7 @@ class TodoStore extends EventEmitter {
       axios.get('http://localhost:3000/todos')
         .then(function(result) {
           result.data.map((data) => {
-            th.addTodo(data.text)
+            th.addTodoFromDB(data)
           })  
         })
   }
@@ -116,13 +117,7 @@ class TodoStore extends EventEmitter {
   }
 
   postToDeleted(todo) {
-    let deletedTodo = {
-      complete: false,
-      id: uuid(),
-      text: todo.text,
-      edit: false
-    }
-    axios.post('http://localhost:3000/deleted-todos', deletedTodo)
+    axios.post('http://localhost:3000/deleted-todos', todo)
   }
 
   postTodo(todo) {
@@ -134,25 +129,16 @@ class TodoStore extends EventEmitter {
   }
 
   restoreTodo(todoToRestore) {
-    this.state.deletedTodos = this.state.todos.filter( function(todo) {
+    this.state.deletedTodos = this.state.deletedTodos.filter( function(todo) {
       return todo.id !== todoToRestore.id
     })
 
-    this.state.todos.push({
-      complete: false,
-      id: this.setID(),
-      text: todoToRestore.text,
-      edit: false
-    })
+    this.state.todos.push(todoToRestore)
 
     this.deleteFromDeletedDB(todoToRestore.id)
     this.postTodo(todoToRestore)
 
     this.emit('change')
-  }
-
-  setID() {
-    return this.state.todos.length + 1
   }
 
   toggleEditTodo(todoToToggle) {
