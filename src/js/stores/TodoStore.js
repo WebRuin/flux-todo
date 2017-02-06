@@ -130,9 +130,7 @@ class TodoStore extends EventEmitter {
   postTodo(todo) {
     axios.post('http://localhost:3000/todos', todo)
   }
-
-<<<<<<< HEAD
-=======
+  
   setDeletedID() {
     return this.state.deletedTodos.length + 1
   }
@@ -159,7 +157,6 @@ class TodoStore extends EventEmitter {
     return this.state.todos.length + 1
   }
 
->>>>>>> history-page
   toggleEditTodo(todoToToggle) {
 		this.state.todos = this.state.todos.map(function(todo) {
       if ( todo.id === todoToToggle.id ) {
